@@ -12,6 +12,7 @@ import {
   getUserHandler,
   deleteUserHandler,
   getUserAllHandler,
+  updateUserHandler,
 } from "../controllers/user.controler.js";
 import userValidation from "../middelware/userValidation.js";
 
@@ -23,6 +24,7 @@ route.use(["/api/user"], userValidation);
 route.post("/api/register", registerUserHandler);
 route.post("/api/login", loginUserHandler);
 route.get("/api/user", getUserHandler);
+route.put("/api/user/:id", updateUserHandler);
 route.get("/api/user/all", getUserAllHandler);
 route.delete("/api/user/:id", deleteUserHandler);
 route.post("/api/post", createPostHandler);

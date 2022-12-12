@@ -77,3 +77,18 @@ export const deleteUser = async (ctx) => {
     throw new Error(error);
   }
 };
+
+export const updateUser = async (ctx) => {
+  const { id } = ctx.params;
+  const { name, email, username } = ctx.request.body;
+  try {
+    const user = await userModel.findByIdAndUpdate(id, {
+      name,
+      email,
+      username,
+    });
+    return user;
+  } catch (error) {
+    throw new Error(error);
+  }
+};

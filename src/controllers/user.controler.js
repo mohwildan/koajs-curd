@@ -3,6 +3,7 @@ import {
   deleteUser,
   getUserAll,
   loginUser,
+  updateUser,
 } from "../services/user.service.js";
 
 export const registerUserHandler = async (ctx) => {
@@ -45,6 +46,17 @@ export const getUserAllHandler = async (ctx) => {
 export const deleteUserHandler = async (ctx) => {
   try {
     const user = await deleteUser(ctx);
+    ctx.body = user;
+  } catch (error) {
+    console.log(error);
+    ctx.status = 400;
+    ctx.body = error.message;
+  }
+};
+
+export const updateUserHandler = async (ctx) => {
+  try {
+    const user = await updateUser(ctx);
     ctx.body = user;
   } catch (error) {
     console.log(error);

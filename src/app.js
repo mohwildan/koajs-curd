@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser());
 app.use(route.routes()).use(route.allowedMethods());
 
-app.listen(port, async () => {
+app.listen(port, () => {
   console.log(`your app run in http://localhost:${port}`);
   connectionDatabase();
 });
