@@ -1,5 +1,12 @@
 import Router from "koa-router";
 import {
+  createCommentHandler,
+  deleteCommentHandler,
+  getCommentByIdHandler,
+  getCommentHandler,
+  updateCommentHandler,
+} from "../controllers/comment.controller.js";
+import {
   createPostHandler,
   deletePostHandler,
   getPostByIdHandler,
@@ -32,5 +39,11 @@ route.get("/api/post", getPostHandler);
 route.get("/api/post/:id", getPostByIdHandler);
 route.delete("/api/post/:id", deletePostHandler);
 route.put("/api/post/:id", updatePostByIdHandler);
+//comment in post
+route.post("/api/comment", createCommentHandler);
+route.get("/api/comment/:id", getCommentByIdHandler);
+route.get("/api/comment", getCommentHandler);
+route.delete("/api/comment/:id", deleteCommentHandler);
+route.put("/api/comment/:id", updateCommentHandler);
 
 export default route;
