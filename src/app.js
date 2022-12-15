@@ -1,6 +1,5 @@
 import dotEnv from "dotenv";
 import Koa from "koa";
-import bodyParser from "koa-bodyparser";
 import { koaBody } from "koa-body"
 import route from "./routes/index.js";
 import connectionDatabase from "./utils/connectionDatabase.js";
@@ -8,7 +7,6 @@ import connectionDatabase from "./utils/connectionDatabase.js";
 dotEnv.config();
 const app = new Koa();
 const port = process.env.PORT || 3000;
-app.use(bodyParser())
 app.use(koaBody({
   urlencoded: true,
 }))
