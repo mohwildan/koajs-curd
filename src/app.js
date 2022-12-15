@@ -8,6 +8,7 @@ import connectionDatabase from "./utils/connectionDatabase.js";
 dotEnv.config();
 const app = new Koa();
 const port = process.env.PORT || 3000;
+app.use(bodyParser())
 app.use(koaBody({
   urlencoded: true,
 }))
