@@ -1,6 +1,7 @@
 import userModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import cloudinary from "../utils/cludinaryUtil.js";
 
 export const createUser = async (ctx) => {
   const { name, email, password, username } = ctx.request.body;
@@ -14,11 +15,14 @@ export const createUser = async (ctx) => {
         message: `email: ${email} user arledy exits`,
       };
     }
+    const resaultImageProfile = await cloudinary.uploader.upload(ctx.request.file.path);
     return await userModel.create({
       name,
       email,
       username,
       password: hash,
+      image_profile: resaultImageProfile.secure_url || null,
+      cloudinari_id: resaultImageProfile.public_id || null,
     });
   } catch (error) {
     throw new Error(error);
