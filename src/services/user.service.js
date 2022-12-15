@@ -50,6 +50,7 @@ export const loginUser = async (ctx) => {
       name: findUser.name,
       username: findUser.username,
       email: findUser.email,
+      image_proilfe: findUser.image_profile || null,
     },
     "seccret"
   );
@@ -80,12 +81,13 @@ export const deleteUser = async (ctx) => {
 
 export const updateUser = async (ctx) => {
   const { id } = ctx.params;
-  const { name, email, username } = ctx.request.body;
+  const { name, email, username, image_profile } = ctx.request.body;
   try {
     const user = await userModel.findByIdAndUpdate(id, {
       name,
       email,
       username,
+      image_profile,
     });
     return user;
   } catch (error) {

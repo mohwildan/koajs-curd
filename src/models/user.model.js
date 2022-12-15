@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  image_profile: {
+    type: String,
+    require: false,
+  },
+  cloudinari_id: {
+    type: String,
+    require: false,
+  },
 });
 
 const userModel = mongoose.model("user", userSchema);

@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:4.2
+    ports: 
+     - 27017:27017
+  api:
+    container_name: api_docker
+    build: .
+    ports: 
+     - 3000:3000
+    environment:
+      - PORT=3000
+    depends_on:
+      - mongo
